@@ -12,7 +12,8 @@ spec:
   - name: tawazun-service
     port: 80
     targetPort: 80
-    nodePort: 30001
     protocol: TCP
+    type: LoadBalancer  
   selector:
     app: tawazun
+    service: tawazun-svc

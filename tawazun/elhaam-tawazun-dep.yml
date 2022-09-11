@@ -4,6 +4,7 @@ metadata:
   name: tawazun-app
   labels:
     name: elhaam
+    service: tawazun-svc
     app: tawazun
   namespace: elhaam-tawazun
 spec:
@@ -11,32 +12,22 @@ spec:
   selector:
     matchLabels:
       app: tawazun
+      service: tawazun-svc
   template:
     metadata:
       labels:
         app: tawazun
+        service: tawazun-svc
     spec:
       containers:
-      - image: abdullahkimrigh/tawazun-sda-hackathon:0.1
-        name: tawazun-app
-        ports:
-        - containerPort: 8080
+        - image: elhaam/tawazun
           name: tawazun
-        livenessProbe:
-          httpGet:
-            path: /probes
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /probes
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        startupProbe:
-          httpGet:
-            path: /probes
-            port: 80
-          failureThreshold: 30
-          periodSeconds: 10
+          resources: 
+            requests: 
+              memory: 250Mi
+              cpu: "250m"
+            limits:
+              memory: 512Mi
+              cpu: "500m"
+          ports:
+            - containerPort: 8080

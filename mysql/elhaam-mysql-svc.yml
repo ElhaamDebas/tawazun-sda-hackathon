@@ -1,12 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: cluster-ip-service
   namespace: elhaam-tawazun
+  labels:
+    app: sql
+    name: elhaam
 spec:
   type: ClusterIP
   ports:
-    - port: 3306
+    - name: sql-port
+      port: 3306
       targetPort: 3306
+      protocol: TCP
   selector:
-    app: mysql
+    app: sql

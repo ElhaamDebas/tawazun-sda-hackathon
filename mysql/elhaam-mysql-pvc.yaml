@@ -1,16 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-ebs-db
-  labels:
-    name: elhaam
-    type: cloud
+  name: sql-pv-claim
   namespace: elhaam-tawazun
+  labels:
+    app: sql
 spec:
-  storageClassName: mysql-db-ebs
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
-  volumeName: pv-ebs-db
+      storage: 4Gi
