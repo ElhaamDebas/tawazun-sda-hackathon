@@ -1,33 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: elhaam-tawazun-dep
+  name: tawazun-mysql
   labels:
     name: elhaam
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tawazun
+      app: tawazun-mysql
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
-        app: tawazun
+        app: tawazun-mysql
     spec:
       containers:
-        - image: elhaam/tawazun:latest
-          name: tawazun
+        - image: mysql:latest
+          name: mysql-tawazun
           env:
-            - name: DB_URL
-              value: mysql-tawazun
-            - name: DB_PORT
-              value: '3306'  
-            - name: DB_NAME
+            - name: MYSQL_ROOT_PASSWORD
+              value: DevOps2022
+            - name: MYSQL_DATABASE
               value: tawazun  
-            - name: DB_USERNAME
-              value: root  
-            - name: DB_PASSWORD
-              value: DevOps2022 
           ports:
-          - containerPort: 8080
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: tawazn-mysql-pv-claim
           
+            
