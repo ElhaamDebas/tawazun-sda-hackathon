@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: tawazun
+  namespace: -elhaam-tawazun
 spec:
   replicas: 1
   selector:
@@ -13,6 +13,7 @@ spec:
   template:
     metadata:
       labels:
+        name: elhaam
         app: mysql
     spec:
       containers:

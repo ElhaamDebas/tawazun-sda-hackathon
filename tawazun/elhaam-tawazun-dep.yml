@@ -3,8 +3,9 @@ kind: Deployment
 metadata:
   name: tawazun-app
   labels:
+    name: elhaam
     app: tawazun
-  namespace: tawazun
+  namespace: elhaam-tawazun
 spec:
   replicas: 1
   selector:
@@ -13,13 +14,14 @@ spec:
   template:
     metadata:
       labels:
+        name: elhaam
         app: tawazun
     spec:
       containers:
       - image: abdullahkimrigh/tawazun-sda-hackathon:0.1
         name: tawazun-app
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           name: tawazun
         livenessProbe:
           httpGet:
