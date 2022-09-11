@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tawazun
+  labels:
+    app: tawazun
+  namespace: tawazun
+spec:
+  type: NodePort
+  ports:
+  - name: tawazun-service
+    port: 80
+    targetPort: 80
+    nodePort: 30001
+    protocol: TCP
+  selector:
+    app: tawazun
