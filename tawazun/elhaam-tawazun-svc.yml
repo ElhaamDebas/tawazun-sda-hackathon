@@ -1,19 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: tawazun
-  labels:
-    name: elhaam
-    app: tawazun
-  namespace: elhaam-tawazun
+  name: tawazun-svc
+  namespace: mohammedeid-tawazun
+  labels: 
+    name: MohammedShaikh
 spec:
-  type: NodePort
-  ports:
-  - name: tawazun-service
-    port: 80
-    targetPort: 80
-    protocol: TCP
-    type: LoadBalancer  
   selector:
     app: tawazun
     service: tawazun-svc
+  ports:
+    - port: 80 
+      targetPort: 8080
+  type: LoadBalancer  
