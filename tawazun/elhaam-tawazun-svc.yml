@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: tawazun
   labels:
+    name: elhaam
     app: tawazun
-  namespace: tawazun
+  namespace: elhaam-tawazun
 spec:
   type: NodePort
   ports:

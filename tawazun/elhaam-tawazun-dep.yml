@@ -5,6 +5,7 @@ metadata:
   labels:
     name: elhaam
     app: tawazun
+    service: tawazun-svc
   namespace: elhaam-tawazun
 spec:
   replicas: 1
@@ -14,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        name: elhaam
+        service: tawazun-svc
         app: tawazun
     spec:
       containers:
