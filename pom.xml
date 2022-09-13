@@ -163,8 +163,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-	</dependencies>
-    <distributionManagement>
+	<distributionManagement>
         <repository>
           <id>nexus</id>
           <name>Releases</name>
@@ -175,7 +174,7 @@
           <name>Snapshot</name>
           <url>http://ec2-3-86-210-187.compute-1.amazonaws.com:8081/repository/maven-snapshots</url>
         </snapshotRepository>
-      </distributionManagement>
+       </distributionManagement>
 	<build>
      <finalName>tawazun</finalName>
 		<plugins>
